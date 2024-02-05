@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 /**
@@ -94,7 +95,11 @@ public class SecurityConfig {
                         El booleano (true) indica que siempre se debe redirigir al usuario a esa URL, incluso si intentó acceder a una página protegida y fue redirigido al formulario de inicio de sesión antes de la autenticación.*/
                         .defaultSuccessUrl("/",true)
                         .permitAll()
+
+
                 )
+//                .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login"))
+
                 /**
                  * TODO ExceptionHandling - Manejo de excepxiones, con la propiedad accessDeniedPage permite configurar una página personalizada a la que se redirigirá al usuario.
                  */
