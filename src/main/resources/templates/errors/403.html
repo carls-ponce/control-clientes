@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:vertical-align="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Acceso</title>
+</head>
+<body>
+    <h1>¡Error 403!</h1> <br>
+    <p>No tienes permiso para acceder a esta ruta, verifica.</p>
+    <img src="/img/403/403.png" alt="Error"> <br>
+    <a th:href="@{/}">[[#{accion.regresar}]]</a>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="es">
+<head th:replace="layout/plantilla :: head">
+    <meta charset="UTF-8">
+    <title>Inicio con Spring Boot</title>
+</head>
+<body>
+<header th:replace="layout/plantilla :: header"></header>
+<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
+<div th:if="${personas != null and !personas.isEmpty()}">
+    <table border="1px">
+        <tr>
+            <th>[[#{persona.nombre}]]:</th>
+            <th>[[#{persona.apellido}]]:</th>
+            <th>[[#{persona.email}]]:</th>
+            <th>[[#{persona.telefono}]]:</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.editar}]]:</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.eliminar}]]:</th>
+        </tr>
+        <tr th:each="persona: ${personas}">
+            <td th:text="${persona.nombre}">Nombre:</td>
+            <td th:text="${persona.apellido}">Apellido:</td>
+            <td th:text="${persona.email}">Email:</td>
+            <td th:text="${persona.telefono}">Teléfono:</td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/editar/} + ${persona.id_Persona}"/>[[#{accion.editar}]]</td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/eliminar(id_Persona=${persona.id_Persona})}" th:text="Eliminar"/></td>
+        </tr>
+    </table>
+</div>
+<div th:if="${personas == null or personas.isEmpty()}">
+    [[#{persona.lista}]]
+</div>
+    <footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>

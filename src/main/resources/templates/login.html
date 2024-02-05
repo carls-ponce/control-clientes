@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}"></header>
+
+    <section id="actions" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+<!--                Aqui se pueden agregar algunos botones-->
+            </div>
+        </div>
+    </section>
+<!--    <h1>Login</h1>-->
+    <form method="POST" th:action="@{/login}">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username"/>
+        <br>
+        <label for="password">password:</label>
+        <input type="password" name="password" id="password"/>
+
+        <input type="submit" value="login"/>
+        <br>
+    </form>
+</body>
+</html>
