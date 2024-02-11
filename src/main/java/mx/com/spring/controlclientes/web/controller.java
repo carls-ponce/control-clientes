@@ -13,6 +13,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.text.DecimalFormat;
+
 @Controller
 @Slf4j
 public class controller {
@@ -36,6 +38,18 @@ public class controller {
         log.info("Ejecutando el controlador Spring MVC");
         log.info("Usuario que inició sesión: " + user);
         model.addAttribute("personas", personas);
+        var balance = 0D;
+        for (var p:personas){
+           balance = p.getSaldo();
+        }
+        model.addAttribute("balance", new DecimalFormat("#,##0.00").format(balance));
+
+        var saldoTotal = 0D;
+        for (var p:personas) {
+            saldoTotal += p.getSaldo();
+        }
+        model.addAttribute("saldoTotal", new DecimalFormat("$#,##0.00").format(saldoTotal));
+        model.addAttribute("totalClientes", personas.size());
         return "index";
     }
 

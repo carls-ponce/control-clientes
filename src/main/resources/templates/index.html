@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
 <head th:replace="layout/plantilla :: head">
     <meta charset="UTF-8">
     <title>Inicio con Spring Boot</title>
 </head>
 <body>
 <header th:replace="layout/plantilla :: header"></header>
+
+<section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+<section th:replace="layout/agregarCliente :: agregarCliente"></section>
+<section th:replace="layout/listadoClientes :: listadoClientes"></section>
+
 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>
 <div th:if="${personas != null and !personas.isEmpty()}">
     <table border="1px">

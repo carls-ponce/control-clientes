@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -27,5 +28,9 @@ public class Persona implements Serializable {
     @Email
     private String email;
     private String telefono;
+
+    //Not null puede ser usado en tipos numéricos, NotEmpty sólo cadenas.
+    @NotNull
+    private Double saldo;
 
 }
